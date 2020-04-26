@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}music_album_detail.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+
+{% block content %}
+<div id='content'>
+
+	<h2 style="display:inline">{{object.name}}</h2>
+	&emsp;<b><i>{{object.description}}</i></b>
+
+	<hr/>
+
+	<div id="album-detail">
+		{% for music in object.music_set.all %}
+		<div class="album-detail-photo">
+			<a href="{{music.get_absolute_url}}">
+			<img class="thumbnail" src="{%static "music/icon.png"%}"/>
+			</a>
+			<li>{{music.title}}</li>
+			<li>{{music.upload_date|date:"Y-m-d"}}</li>
+		</div>
+		{% endfor %}
+	</div>
+
+</div>
+{% endblock %}

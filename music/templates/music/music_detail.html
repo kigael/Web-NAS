@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block title%}music_detail.html{%endblock%}
+
+{%load staticfiles%}
+{%block extrastyle%}{%static 'photo/photo.css'%}{%endblock%}
+
+{%block content%}
+<div id='content'>
+
+	<h2>{{object.title}}</h2>
+
+	<table class="photo-detail">
+	<tr>
+	<td>
+		<audio preload="none" controls>
+			<source src="{{object.music.url}}" type="audio/mpeg">
+			<source src="{{object.music.url}}" type="audio/ogg">
+			Your browser does not support the audio element.
+		</audio>
+	</td>
+	
+	<td>
+	<ul>
+		<li>Music Description</li>
+		{%if object.description%}<p>{{object.description|linebreaks}}</p>
+		{%else%}<p>(blank)</p>{%endif%}
+		<li>Upload Date</li>
+		<p>{{object.upload_date}}</p>
+		<li>Album Name</li>
+		<p><a href="{%url 'music:album_detail' object.album.id%}">{{object.album.name}}</a></p>
+	</ul>
+	</td>
+	</tr></table>
+
+</div>
+{%endblock%}

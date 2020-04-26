@@ -1,0 +1,64 @@
+{% extends "base.html"  %}
+
+{% block title %}home.html{% endblock %}
+
+{% load staticfiles  %}
+{% block extrastyle  %}{% static "css/home.css"  %}{% endblock %}
+
+{% block content %}
+<div id="content_home">
+	<div id="homeimg">
+		<a href ="/">
+			<img src="{% static 'img/dku-logo.jpg'  %}" style="height:256px; width:430px">
+		</a>
+		<h4 style:"margin: 0px;">Welcome to Web NAS</h4>
+	</div>
+
+	<hr style="margin: 5px 0;">
+
+	<h2>Select Application</h2>
+
+	<table id="applist">
+		<tr>
+		<td><b><i><a href="{%url 'bookmark:index'%}">Bookmark</a></i></b></td>
+		<td>You can save URLs of frequently visiting websites.</td>
+		<td class="Edit"><i><a href="{%url 'bookmark:add'%}">Add</a></i></td>
+		<td class="Edit"><i><a href="{%url 'bookmark:change'%}">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="{%url 'blog:index'%}">Blog</a></i></b></td>
+		<td>You can write your own post and share to others.</td>
+		<td class="Edit"><i><a href="{%url 'blog:add'%}">Add</a></i></td>
+		<td class="Edit"><i><a href="{%url 'blog:change'%}">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="{%url 'photo:index'%}">Photo</a></i></b></td>
+		<td>You can upload your own photos and share to others.</td>
+		<td class="Edit"><i><a href="{%url 'photo:album_add'%}">Add</a></i></td>
+		<td class="Edit"><i><a href="{%url 'photo:album_change'%}">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="{%url 'music:index'%}">Music</a></i></b></td>
+		<td>You can upload your own musics and share to others.</td>
+		<td class="Edit"><i><a href="{%url 'music:album_add'%}">Add</a></i></td>
+		<td class="Edit"><i><a href="{%url 'music:album_change'%}">Change</a></i></td>
+		</tr>
+
+		<tr>
+		<td><b><i><a href="{%url 'video:index'%}">Video</a></i></b></td>
+		<td>You can upload your own videos and share to others.</td>
+		<td class="Edit"><i><a href="{%url 'video:album_add'%}">Add</a></i></td>
+		<td class="Edit"><i><a href="{%url 'video:album_change'%}">Change</a></i></td>
+		</tr>
+	</table>
+</div>
+{% endblock content  %}
+
+{% block footer  %}
+<div id="footer">
+	&copy; Kigael 2019
+<div>
+{% endblock footer  %}

@@ -1,0 +1,52 @@
+{%extends "base.html"%}
+
+{%block title%}music_form.html{%endblock%}
+
+{%load staticfiles%}
+{%block extrastyle%}{%static "css/forms.css"%}{%endblock%}
+
+{%block content%}
+<div id="content">
+
+	<h1>Music Create/Update - {{user}}</h1>
+
+	{%if form.is_multipart%}
+	<form enctype="multipart/form-data" method="post" action=".">
+	{%else%}
+	<form method="post" action=".">
+	{%endif%}
+	{%csrf_token%}
+
+	{%if form.errors%}
+	<p class="errornote">Wrong! Please correct the error(s) below</p>
+	{%endif%}
+	
+	<p>This is a creation or update form for your music</p>
+	
+	<fieldset class="aligned">
+		<div class="form-row">
+			{{form.music.label_tag}}{{form.music}}
+		</div>
+
+		<div class="form-row">
+			{{form.album.label_tag}}{{form.album}}
+			<button type="button"><a href="{%url 'music:album_add'%}">Add Album</a></button>
+		</div>
+
+		<div class="form-row">
+			{{form.title.label_tag}}{{form.title}}
+		</div>
+
+		<div class="form-row">
+			{{form.description.label_tag}}{{form.description}}
+		</div>
+	</fieldset>
+	
+	<div class="submit-row">
+		<input type="submit" value="Submit"/>
+	</div>
+
+	<script type="text/javascript">document.getElementById('id_album').focus();</script>
+	</form>
+</div>
+{%endblock%}

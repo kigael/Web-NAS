@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+
+{%block title%}post_archive_month.html{%endblock%}
+
+{%block content%}
+<div id='content'>
+<h1>Archive for {{month|date:"Y년 m월"}}</h1>
+ <ul>
+	{%for date in date_list%}
+	<li style="display: inline;">
+	<a href="{% url 'blog:post_day_archive' date|date:'Y' date|date:'m' date|date:'d' %}">
+	{{date|date:'d'}}일</a>
+	</li>
+	{%endfor%}
+</ul>
+<br/>
+<div>
+	<ul>
+		{%for post in object_list%}
+		<li>{{post.modify_date|date:'Y-m-d'}}&nbsp;&nbsp;&nbsp;
+		<a href="{{post.get_absolute_url}}"><strong>{{post.title}}</strong></a>
+		</li>
+		{%endfor%}
+	</ul>
+</div>
+<br/>
+<div><a href="{% url 'blog:post_year_archive' month|date:'Y' %}"><strong>Archive for {{month|date:'Y년'}}</strong></a></div>
+</div>
+{%endblock%}
